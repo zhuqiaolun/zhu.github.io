@@ -9,7 +9,7 @@
  */
 
 /**
- * 
+ *
  */
 
 /* Mixins */
@@ -4745,7 +4745,7 @@ a.label:focus {
 }
 
 .panel-body {
-  padding: 15px;
+  padding: 0 0 15px 0;
 }
 
 .panel-body:before,
@@ -5920,9 +5920,21 @@ body.no-sidebar .sidebar {
 }
 
 .main .article-meta {
-  font-size: 13px;
+  font-size: 15px;
   color: #999;
 }
+
+.main .article-meta .article-type {
+  font-size: 10px;
+  padding: 1px 2px;
+  color: #fff;
+  background-color: #787d75;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.2em;
+}
+
 
 .main .article-meta a {
   color: #999;
@@ -6407,7 +6419,7 @@ body.no-sidebar .sidebar {
 }
 
 .article-header {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .article-footer {
@@ -6419,7 +6431,8 @@ body.no-sidebar .sidebar {
  */
 
 .collection {
-  position: relative;
+    padding: 0 20px;
+    position: relative;
 }
 
 .collection a.collection-item {

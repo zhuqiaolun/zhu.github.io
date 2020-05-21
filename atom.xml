@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
-  <updated>2020-05-19T09:46:21.437Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="https://zhuqiaolun.com/"/>
+  <updated>2020-05-21T12:25:01.221Z</updated>
+  <id>https://zhuqiaolun.com/</id>
   
   <author>
     <name>ZhuQiaoLun</name>
@@ -17,13 +17,59 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>关于使用macleaya主题的修改</title>
-    <link href="http://yoursite.com/2020/05/18/hello2/"/>
-    <id>http://yoursite.com/2020/05/18/hello2/</id>
-    <published>2020-05-18T02:50:24.000Z</published>
-    <updated>2020-05-19T09:46:21.437Z</updated>
+    <title>(图)王者荣耀 - 武则天 - 女帝</title>
+    <link href="https://zhuqiaolun.com/2020/05/21/hello4/"/>
+    <id>https://zhuqiaolun.com/2020/05/21/hello4/</id>
+    <published>2020-05-21T11:21:02.000Z</published>
+    <updated>2020-05-21T12:25:01.221Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo</a> 主题中选择 <a href="https://github.com/lsylovelmy/hexo-theme-macleaya" target="_blank" rel="noopener">macleaya</a> 主题并应用，此当前为实际效果</p><h3 id="字段描述"><a href="#字段描述" class="headerlink" title="字段描述"></a>字段描述</h3><table style="text-align: left;">    <tr>        <th>title</th>        <th>网站标题</th>        <th>浏览器上显示的那些内容，不仅用户能看到，也能被搜索引擎检索到</th>    </tr>    <tr>        <th>keywords</th>        <th>关键词</th>        <th>作用是告诉搜索引擎本页内容是围绕哪些词展开的</th>    </tr>    <tr>        <th>description</th>        <th>内容摘要</th>        <th>一个网页的简要内容概况，描述内容要和页面内容相关</th>    </tr>    <tr>        <th>type</th>        <th>网站内容</th>        <th>类型</th>    </tr>    <tr>        <th>date</th>        <th>网站内容</th>        <th>时间，由生成页面时自动生成，默认格式为：YYYY-MM-DD</th>    </tr        <tr>        <th>author</th>        <th>网站内容</th>        <th>作者</th>    </tr>    <tr>        <th>excerpt</th>        <th>网站内容</th>        <th>文章列表时的简介</th>    </tr>    <tr>        <th>categories</th>        <th>网站内容</th>        <th>类别</th>    </tr>    <tr>        <th>tags</th>        <th>网站内容</th>        <th>标签</th>    </tr></table><h3 id="内容修改"><a href="#内容修改" class="headerlink" title="内容修改"></a>内容修改</h3><h4 id="时间显示修改"><a href="#时间显示修改" class="headerlink" title="时间显示修改"></a>时间显示修改</h4><p>当前默认格式为：YYYY-MM-DD，想要修改为 YYYY-MM-DD HH:mm:ss，<br>则需在将date(page.date) 改为 date(page.date,’YYYY-MM-DD HH:mm:ss’)即可</p><h4 id="head-ejs修改"><a href="#head-ejs修改" class="headerlink" title="head.ejs修改"></a>head.ejs修改</h4><p>在应用过程中发现 layout/_partial/head.ejs的文件中page.content值与page.description重合，<br>当设置content字段时页面内容则变成content的内容，无法显示正常内容，<br>故 page.content 改为：page.description</p><center><img src="/images/hello/20200518131616.png" width="100%" height="100%" />20200518131616</center><h4 id="footer-ejs修改"><a href="#footer-ejs修改" class="headerlink" title="footer.ejs修改"></a>footer.ejs修改</h4><p>此部分修改一些页脚显示，显示自己需要显示的内容</p><center><img src="/images/hello/20200518181943.png" width="100%" height="100%" />20200518181943</center>]]></content>
+    <content type="html"><![CDATA[<p>历史上的TA：<br>&ensp;&ensp;&ensp;&ensp;<a href="http://pvp.qq.com/story201904/index.html#/heroDetail/index/136" target="_blank" rel="noopener">武则天</a>，名曌，这个字，是她自己为自己造的，取明月当空之意。中国历史上的女主不少，但称帝当皇帝的，只有她一个。武则天最初是唐太宗的才人，后与太宗的儿子李治相恋，李治登基后，封为昭仪，进一步被封为皇后。高宗多病，武则天临朝听政，宫中并称二圣。高宗死后，几经折腾，先后废掉两个儿子，武则天剪除了忠于李唐的朝中势力，改国号为周，自立为帝。武则天虽然任用酷吏，鼓励告密，杀了不少朝臣，但为政还算清明，在她当政期间，国家强盛，民众安泰。临死因传位问题无法解决，最终把天下又还给了李家。</p><div style="margin: 15px;">    <center>        <img title="武则天 - 女帝" alt="武则天 - 女帝" src="/images/hello4/136_2.jpg" width="80%" height="80%"/>    </center>    <center>        武则天 - 女帝    </center></div><div style="margin: 15px;">    <center>        <img title="武则天 - 东方不败" alt="武则天 - 东方不败" src="/images/hello4/136_3.jpg" width="80%" height="80%"/>    </center>    <center>        武则天 - 东方不败    </center></div><div style="margin: 15px;">    <center>        <img title="武则天 - 海洋之心" alt="武则天 - 海洋之心" src="/images/hello4/136_4.jpg" width="80%" height="80%"/>    </center>    <center>        武则天 - 海洋之心    </center></div>]]></content>
+    
+    <summary type="html">
+    
+      王者荣耀,武则天,王者荣耀 - 武则天
+    
+    </summary>
+    
+    
+      <category term="王者荣耀" scheme="https://zhuqiaolun.com/categories/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80/"/>
+    
+    
+      <category term="游戏" scheme="https://zhuqiaolun.com/tags/%E6%B8%B8%E6%88%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>(图)王者荣耀 - 嬴政 - 王者独尊</title>
+    <link href="https://zhuqiaolun.com/2020/05/21/hello3/"/>
+    <id>https://zhuqiaolun.com/2020/05/21/hello3/</id>
+    <published>2020-05-21T11:13:38.000Z</published>
+    <updated>2020-05-21T12:25:35.110Z</updated>
+    
+    <content type="html"><![CDATA[<p>历史上的TA：<br>&ensp;&ensp;&ensp;&ensp;<a href="https://pvp.qq.com/story201904/index.html#/heroDetail/index/110" target="_blank" rel="noopener">嬴政</a>又称秦王政，秦始皇。他是秦朝第一个皇帝，也是秦国的最后一个国王。关于他的出身，有很传奇的经历。他的父亲，本是秦国被遗弃在外的王子，因为赵国富商吕不韦的运作，才得以回国接班。所以，秦王政即位时，称吕不韦为亚父。但是，作为枭雄的嬴政，很快就运用铁腕，从吕不韦的手中夺过了大权，囚禁了信任宦官、秽乱宫廷的母后，放手任用法家信徒，把军国主义政治推向极致，终于灭了六国，一统天下。他是中国大一统帝制王朝的开创者，也是以吏为师的专制文化的倡导者。</p><div style="margin: 15px;">    <center>        <img title="嬴政 - 王者独尊" alt="嬴政 - 王者独尊" src="/images/hello3/110_2.jpg" width="80%" height="80%"/>    </center>    <center>        嬴政 - 王者独尊    </center></div><div style="margin: 15px;">    <center>        <img title="嬴政 - 摇滚巨星" alt="嬴政 - 摇滚巨星" src="/images/hello3/110_3.jpg" width="80%" height="80%"/>    </center>    <center>        嬴政 - 摇滚巨星    </center></div><div style="margin: 15px;">    <center>        <img title="嬴政 - 暗夜贵公子" alt="嬴政 - 暗夜贵公子" src="/images/hello3/110_4.jpg" width="80%" height="80%"/>    </center>    <center>        嬴政 - 暗夜贵公子    </center></div><div style="margin: 15px;">    <center>        <img title="嬴政 - 优雅恋人" alt="嬴政 - 优雅恋人" src="/images/hello3/110_5.jpg" width="80%" height="80%"/>    </center>    <center>        嬴政 - 优雅恋人    </center></div><div style="margin: 15px;">    <center>        <img title="嬴政 - 白昼王子" alt="嬴政 - 白昼王子" src="/images/hello3/110_6.jpg" width="80%" height="80%"/>    </center>    <center>        嬴政 - 白昼王子    </center></div>]]></content>
+    
+    <summary type="html">
+    
+      王者荣耀,嬴政,王者荣耀 - 嬴政
+    
+    </summary>
+    
+    
+      <category term="王者荣耀" scheme="https://zhuqiaolun.com/categories/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80/"/>
+    
+    
+      <category term="游戏" scheme="https://zhuqiaolun.com/tags/%E6%B8%B8%E6%88%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于使用macleaya主题的修改</title>
+    <link href="https://zhuqiaolun.com/2020/05/18/hello2/"/>
+    <id>https://zhuqiaolun.com/2020/05/18/hello2/</id>
+    <published>2020-05-18T02:50:24.000Z</published>
+    <updated>2020-05-21T12:39:49.403Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo</a> 主题中选择 <a href="https://github.com/lsylovelmy/hexo-theme-macleaya" target="_blank" rel="noopener">macleaya</a> 主题并应用</p><h3 id="字段描述"><a href="#字段描述" class="headerlink" title="字段描述"></a>字段描述</h3><table style="text-align: left;">    <tr>        <th>title</th>        <th>网站标题</th>        <th>浏览器上显示的那些内容，不仅用户能看到，也能被搜索引擎检索到</th>    </tr>    <tr>        <th>keywords</th>        <th>关键词</th>        <th>作用是告诉搜索引擎本页内容是围绕哪些词展开的</th>    </tr>    <tr>        <th>description</th>        <th>内容摘要</th>        <th>一个网页的简要内容概况，描述内容要和页面内容相关</th>    </tr>    <tr>        <th>type</th>        <th>网站内容</th>        <th>类型</th>    </tr>    <tr>        <th>date</th>        <th>网站内容</th>        <th>时间，由生成页面时自动生成，默认格式为：YYYY-MM-DD</th>    </tr        <tr>        <th>author</th>        <th>网站内容</th>        <th>作者</th>    </tr>    <tr>        <th>excerpt</th>        <th>网站内容</th>        <th>文章列表时的简介</th>    </tr>    <tr>        <th>categories</th>        <th>网站内容</th>        <th>类别</th>    </tr>    <tr>        <th>tags</th>        <th>网站内容</th>        <th>标签</th>    </tr></table><h3 id="内容修改"><a href="#内容修改" class="headerlink" title="内容修改"></a>内容修改</h3><h4 id="时间显示修改"><a href="#时间显示修改" class="headerlink" title="时间显示修改"></a>时间显示修改</h4><p>当前默认格式为：YYYY-MM-DD，想要修改为 YYYY-MM-DD HH:mm:ss，<br>则需在将date(page.date) 改为 date(page.date,’YYYY-MM-DD HH:mm:ss’)即可</p><h4 id="head-ejs修改"><a href="#head-ejs修改" class="headerlink" title="head.ejs修改"></a>head.ejs修改</h4><p>在应用过程中发现 layout/_partial/head.ejs的文件中page.content值与page.description重合，<br>当设置content字段时页面内容则变成content的内容，无法显示正常内容，<br>故 page.content 改为：page.description</p><center><img src="/images/hello2/20200518131616.png" width="100%" height="100%" />20200518131616</center><h4 id="footer-ejs修改"><a href="#footer-ejs修改" class="headerlink" title="footer.ejs修改"></a>footer.ejs修改</h4><p>此部分修改一些页脚显示，显示自己需要显示的内容</p><center><img src="/images/hello2/20200518181943.png" width="100%" height="100%" />20200518181943</center>]]></content>
     
     <summary type="html">
     
@@ -32,19 +78,19 @@
     </summary>
     
     
-      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+      <category term="hexo" scheme="https://zhuqiaolun.com/categories/hexo/"/>
     
     
-      <category term="hexo主题" scheme="http://yoursite.com/tags/hexo%E4%B8%BB%E9%A2%98/"/>
+      <category term="hexo主题" scheme="https://zhuqiaolun.com/tags/hexo%E4%B8%BB%E9%A2%98/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2020/05/13/hello1/"/>
-    <id>http://yoursite.com/2020/05/13/hello1/</id>
+    <link href="https://zhuqiaolun.com/2020/05/13/hello1/"/>
+    <id>https://zhuqiaolun.com/2020/05/13/hello1/</id>
     <published>2020-05-13T04:27:02.000Z</published>
-    <updated>2020-05-19T02:16:45.641Z</updated>
+    <updated>2020-05-21T12:34:55.349Z</updated>
     
     <content type="html"><![CDATA[<h2 id="『你好-世界』"><a href="#『你好-世界』" class="headerlink" title="『你好,世界』"></a>『你好,世界』</h2><h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class HelloWorld</span><br><span class="line">&#123;</span><br><span class="line">    public static void main(String[] args)</span><br><span class="line">    &#123; </span><br><span class="line">      System.out.println( <span class="string">"Hello, World!"</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Hello, World!"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="Python-3"><a href="#Python-3" class="headerlink" title="Python 3"></a>Python 3</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"Hello, World!"</span>)</span><br></pre></td></tr></table></figure><p>可以使用单引号’’，双引号”” 或三引号””” “””或’’’ ‘’’</p><h3 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;iostream&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">"Hello, World!"</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="C-2"><a href="#C-2" class="headerlink" title="C#"></a>C#</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">namespace HelloWorld</span><br><span class="line">&#123;</span><br><span class="line">    class Program</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            System.Console.Write(<span class="string">"Hello, World!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="VB"><a href="#VB" class="headerlink" title="VB"></a>VB</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Module MainFrm</span><br><span class="line">    Sub Main()</span><br><span class="line">        System.Console.WriteLine(<span class="string">"Hello, World!"</span>)</span><br><span class="line">    End Sub</span><br><span class="line">End Module</span><br></pre></td></tr></table></figure><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert (<span class="string">"Hello, World!"</span>);</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.write(<span class="string">"Hello, World!"</span>);</span><br></pre></td></tr></table></figure><h3 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php    </span><br><span class="line"> <span class="built_in">echo</span> <span class="string">'Hello, world!'</span>;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure><h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称</span><br></pre></td></tr></table></figure><h3 id="Object-C"><a href="#Object-C" class="headerlink" title="Object-C"></a>Object-C</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#import &lt;stdio.h&gt;</span></span><br><span class="line">int main(int argc,const char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Hello World"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -55,10 +101,10 @@
     </summary>
     
     
-      <category term="hello" scheme="http://yoursite.com/categories/hello/"/>
+      <category term="hello" scheme="https://zhuqiaolun.com/categories/hello/"/>
     
     
-      <category term="hello" scheme="http://yoursite.com/tags/hello/"/>
+      <category term="hello" scheme="https://zhuqiaolun.com/tags/hello/"/>
     
   </entry>
   
