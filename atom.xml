@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zhuqiaolun.com/"/>
-  <updated>2020-05-22T16:17:15.236Z</updated>
+  <updated>2020-05-23T14:43:30.949Z</updated>
   <id>https://zhuqiaolun.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在Linux中安装Java环境</title>
+    <link href="https://zhuqiaolun.com/2020/05/23/hello6/"/>
+    <id>https://zhuqiaolun.com/2020/05/23/hello6/</id>
+    <published>2020-05-23T12:19:50.000Z</published>
+    <updated>2020-05-23T14:43:30.949Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="下载JDK"><a href="#下载JDK" class="headerlink" title="下载JDK"></a>下载JDK</h3><p>由于是安装在服务器，所以只需jre即可，选择对应的系统版本点击<a href="https://www.oracle.com/webapps/redirect/signon?nexturl=https://download.oracle.com/otn/java/jdk/8u251-b08/3d5a2bb8f8d4428bbe94aed7ec7ae784/server-jre-8u251-linux-x64.tar.gz" target="_blank" rel="noopener">下载</a>，没有登陆则跳转登陆页面，<br>此提供一位同学账号： `2028056560@qq.com/Oracle1234 方便使用 （感谢同学）</p><h3 id="上传JDK到服务器"><a href="#上传JDK到服务器" class="headerlink" title="上传JDK到服务器"></a>上传JDK到服务器</h3><p>安装命令 yum install -y lrzsz 工具，此为在Xshell下使用，rz:上传，sz:下载<br>在local下创建java目录，在弹出的窗口中选择要上传的jdk压缩文件，上传文件到Linux上java安装目录并解压，此时安装目录为：/usr/local/java/jdk1.8.0_231</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#x2F;use&#x2F;local&#x2F;java   # 创建目录</span><br><span class="line">cd &#x2F;use&#x2F;local&#x2F;java  # 进入目录</span><br><span class="line">rz  # 上传文件</span><br><span class="line">tar -zxvf jdk-8u231-linux-x64.tar.gz    # 解压文件</span><br></pre></td></tr></table></figure><div style="margin: 5px;">    <center>        <img title="" alt="20200523211855" src="/images/hello6/20200523211855.png" width="100%" />    </center></div><h3 id="配置JDK环境变量"><a href="#配置JDK环境变量" class="headerlink" title="配置JDK环境变量"></a>配置JDK环境变量</h3><p>使用 vim /etc/profile 命令进入编辑器，添加以下内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">set java environment</span><br><span class="line">JAVA_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;java&#x2F;jdk1.8.0_231</span><br><span class="line">JRE_HOME&#x3D;$JAVA_HOME&#x2F;jre     </span><br><span class="line">CLASS_PATH&#x3D;.:$JAVA_HOME&#x2F;lib&#x2F;dt.jar:$JAVA_HOME&#x2F;lib&#x2F;tools.jar:$JRE_HOME&#x2F;lib</span><br><span class="line">PATH&#x3D;$PATH:$JAVA_HOME&#x2F;bin:$JRE_HOME&#x2F;bin</span><br><span class="line">export JAVA_HOME JRE_HOME CLASS_PATH PATH</span><br></pre></td></tr></table></figure><div style="margin: 5px;">    <center>        <img title="" alt="20200523212145" src="/images/hello6/20200523212145.png" width="100%" />    </center></div>使用 qw 对内容保存并退出 <p>使用 source /etc/profile 让内容生效<br>使用 java -version 查看环境是否安装完全</p><div style="margin: 5px;">    <center>        <img title="" alt="20200523221606" src="/images/hello6/20200523221606.png" width="100%" />    </center></div><hr><p>** end **</p>]]></content>
+    
+    <summary type="html">
+    
+      在Linux中安装Java环境
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://zhuqiaolun.com/categories/Linux/"/>
+    
+    
+      <category term="安装软件" scheme="https://zhuqiaolun.com/tags/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>在idea中创建项目与github关联</title>
