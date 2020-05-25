@@ -17,35 +17,36 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>在Windows上安装git-v2.26.2 | Demon - 个人博客</title>
-  <meta name="description" content="在Windows上安装git-v2.26.2">
+  <title>在Linux中安装nginx环境 | Demon - 个人博客</title>
+  <meta name="description" content="在Linux中安装Nginx环境">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在Windows上安装git-v2.26.2">
-<meta property="og:url" content="https://zhuqiaolun.com/2020/05/22/hello5/index.html">
+<meta property="og:title" content="在Linux中安装nginx环境">
+<meta property="og:url" content="https://zhuqiaolun.com/2020/05/25/hello10/index.html">
 <meta property="og:site_name" content="Demon - 个人博客">
-<meta property="og:description" content="在Windows上安装git-v2.26.2">
+<meta property="og:description" content="在Linux中安装Nginx环境">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zhuqiaolun.com/images/hello5/20200524135151.png">
-<meta property="og:image" content="https://zhuqiaolun.com/images/hello5/20200524154530.png">
-<meta property="og:image" content="https://zhuqiaolun.com/images/hello5/20200524154634.png">
-<meta property="og:image" content="https://zhuqiaolun.com/images/hello5/20200524154845.png">
-<meta property="og:image" content="https://zhuqiaolun.com/images/hello5/20200524154934.png">
-<meta property="og:image" content="https://zhuqiaolun.com/images/hello5/20200524155123.png">
-<meta property="og:image" content="https://zhuqiaolun.com/images/hello5/20200524155406.png">
-<meta property="og:image" content="https://zhuqiaolun.com/images/hello5/20200524155810.png">
-<meta property="og:image" content="https://zhuqiaolun.com/images/hello5/20200524155830.png">
-<meta property="og:image" content="https://zhuqiaolun.com/images/hello5/20200524155858.png">
-<meta property="og:image" content="https://zhuqiaolun.com/images/hello5/20200524155947.png">
-<meta property="og:image" content="https://zhuqiaolun.com/images/hello5/20200524160043.png">
-<meta property="og:image" content="https://zhuqiaolun.com/images/hello5/20200524160313.png">
-<meta property="article:published_time" content="2020-05-22T07:20:00.000Z">
-<meta property="article:modified_time" content="2020-05-24T09:35:54.033Z">
+<meta property="og:image" content="https://zhuqiaolun.com/images/hello10/20200525112627.png">
+<meta property="og:image" content="https://zhuqiaolun.com/images/hello10/20200525130653.png">
+<meta property="og:image" content="https://zhuqiaolun.com/images/hello10/20200525132249.png">
+<meta property="og:image" content="https://zhuqiaolun.com/images/hello10/20200525133307.png">
+<meta property="og:image" content="https://zhuqiaolun.com/images/hello10/20200525133513.png">
+<meta property="og:image" content="https://zhuqiaolun.com/images/hello10/20200525134359.png">
+<meta property="og:image" content="https://zhuqiaolun.com/images/hello10/20200525143235.png">
+<meta property="og:image" content="https://zhuqiaolun.com/images/hello10/20200525144949.png">
+<meta property="og:image" content="https://zhuqiaolun.com/images/hello10/20200525145522.png">
+<meta property="og:image" content="https://zhuqiaolun.com/images/hello10/20200525150655.png">
+<meta property="og:image" content="https://zhuqiaolun.com/images/hello10/20200525150656.png">
+<meta property="og:image" content="https://zhuqiaolun.com/images/hello10/20200525152109.png">
+<meta property="og:image" content="https://zhuqiaolun.com/images/hello10/20200525152320.png">
+<meta property="article:published_time" content="2020-05-25T03:19:31.000Z">
+<meta property="article:modified_time" content="2020-05-25T07:48:51.670Z">
 <meta property="article:author" content="ZhuQiaoLun">
-<meta property="article:tag" content="Windows， git">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Nginx">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zhuqiaolun.com/images/hello5/20200524135151.png">
+<meta name="twitter:image" content="https://zhuqiaolun.com/images/hello10/20200525112627.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://zhuqiaolun.com/2020/05/22/hello5/index.html">
+  <link rel="canonical" href="https://zhuqiaolun.com/2020/05/25/hello10/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Demon - 个人博客" type="application/atom+xml">
   
@@ -358,21 +359,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载git"><span class="toc-number">1.</span> <span class="toc-text">下载git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装git"><span class="toc-number">2.</span> <span class="toc-text">安装git</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载nginx"><span class="toc-number">1.</span> <span class="toc-text">下载nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上传nginx"><span class="toc-number">2.</span> <span class="toc-text">上传nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检测nginx环境"><span class="toc-number">3.</span> <span class="toc-text">检测nginx环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装nginx"><span class="toc-number">4.</span> <span class="toc-text">安装nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置nginx安装目录"><span class="toc-number">4.1.</span> <span class="toc-text">配置nginx安装目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#编译并安装"><span class="toc-number">4.2.</span> <span class="toc-text">编译并安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试是否安装成功"><span class="toc-number">4.3.</span> <span class="toc-text">测试是否安装成功</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动nginx"><span class="toc-number">5.</span> <span class="toc-text">启动nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#访问nginx"><span class="toc-number">6.</span> <span class="toc-text">访问nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改nginx-conf"><span class="toc-number">7.</span> <span class="toc-text">修改nginx.conf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扩展"><span class="toc-number">8.</span> <span class="toc-text">扩展</span></a></li></ol>
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-hello5" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-hello10" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      在Windows上安装git-v2.26.2
+      在Linux中安装nginx环境
     </h1>
   
 
@@ -381,15 +382,15 @@
         <span class="article-type">原创</span>
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2020/05/22/hello5/" class="article-date">
-	  <time datetime="2020-05-22T07:20:00.000Z" itemprop="datePublished">2020-05-22 15:20:00</time>
+	<a href="/2020/05/25/hello10/" class="article-date">
+	  <time datetime="2020-05-25T03:19:31.000Z" itemprop="datePublished">2020-05-25 11:19:31</time>
 	</a>
 </span>
 
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Windows10/">Windows10</a>
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
   </span>
 
         
@@ -410,25 +411,131 @@
 
 	<span class="article-read hidden-xs">
     	<i class="icon icon-eye-fill" aria-hidden="true"></i>
-    	<span id="/2020/05/22/hello5/" class="leancloud_visitors"  data-flag-title="在Windows上安装git-v2.26.2">0</span>
+    	<span id="/2020/05/25/hello10/" class="leancloud_visitors"  data-flag-title="在Linux中安装nginx环境">0</span>
     </span>
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/05/22/hello5/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/05/25/hello10/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 167(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 674(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="下载git"><a href="#下载git" class="headerlink" title="下载git"></a>下载git</h3><p>下载并安装 <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">git</a> 进入自动识别系统， 点击自动弹出下载窗口<br><left><br>    <img title="" alt="20200524135151" src="/images/hello5/20200524135151.png" /><br></left></p>
-<h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3><p>下载结束后，双击进行安装，如已安装点击运行则为修复版本<br><left><br>    <img title="" alt="20200524154530" src="/images/hello5/20200524154530.png" /><br></left><br><left><br>    <img title="" alt="20200524154634" src="/images/hello5/20200524154634.png" /><br></left><br><left><br>    是否显示桌面图，可不勾选，在安装结束后鼠标右键有选项显示<br>    <img title="" alt="20200524154845" src="/images/hello5/20200524154845.png" /><br></left><br><left><br>    <img title="" alt="20200524154934" src="/images/hello5/20200524154934.png" /><br></left><br><left><br>    <img title="" alt="20200524155123" src="/images/hello5/20200524155123.png" /><br></left><br><left><br>    此项完全不修改PATH变量值，仅在Git Bash中使用Git，绝对安全，所以cmd的git –version 无效<br>    <img title="" alt="20200524155406" src="/images/hello5/20200524155406.png" /><br></left><br><left><br>    Git命令与Linux一样，所以最好在OpenSSL中操作命令<br>    <img title="" alt="20200524155810" src="/images/hello5/20200524155810.png" /><br></left><br><left><br>    <img title="" alt="20200524155830" src="/images/hello5/20200524155830.png" /><br></left><br><left><br>    <img title="" alt="20200524155858" src="/images/hello5/20200524155858.png" /><br></left><br><left><br>    启用文件缓存<br>    <img title="" alt="20200524155947" src="/images/hello5/20200524155947.png" /><br></left><br><left><br>    <img title="" alt="20200524160043" src="/images/hello5/20200524160043.png" /><br></left><br><left><br>    在桌面或者文件目录空白处点击鼠标右键，选择 Git Bash Here 选项，即可打开命令界面<br>    <img title="" alt="20200524160313" src="/images/hello5/20200524160313.png" /><br></left></p>
-<hr>
+        <h3 id="下载nginx"><a href="#下载nginx" class="headerlink" title="下载nginx"></a>下载nginx</h3><p>nginx 官网下载地址：<a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">http://nginx.org/en/download.html</a><br>nginx 文件下载地址：<a href="https://nginx.org/download/" target="_blank" rel="noopener">https://nginx.org/download/</a></p>
+<div>
+<left>
+    <p>下载稳定版本</p>
+    <img title="" alt="20200525112627" src="/images/hello10/20200525112627.png" />
+</left>
+<div>
+
+<h3 id="上传nginx"><a href="#上传nginx" class="headerlink" title="上传nginx"></a>上传nginx</h3><pre><code>mkdir /usr/local/software           # 创建软件安装目录
+cd /usr/local/software              # 进入软件安装目录
+rz                                  # 上传nginx文件，需要安装 yum install lrzsz
+ll                                  # 查看上传文件
+tar -zxvf nginx-1.18.0.tar.gz       # 解压文件到当前目录</code></pre><div>
+<left>
+    <img title="" alt="20200525130653" src="/images/hello10/20200525130653.png" />
+</left>
+<div>
+
+<h3 id="检测nginx环境"><a href="#检测nginx环境" class="headerlink" title="检测nginx环境"></a>检测nginx环境</h3><p>在安装nginx前首先要确认系统中安装了gcc、zlib 、zlib-devel、pcre、pcre-devel、openssl、openssl-devel<br>Linux下检查是否安装过某软件包：</p>
+<pre><code>yum list installed | grep gcc                     # 查看是否安装了gcc
+yum list installed | grep pcre
+yum list installed | grep pcre-devel
+yum list installed | grep zlib
+yum list installed | grep zlib-devel
+yum list installed | grep openssl
+yum list installed | grep openssl-devel      </code></pre><div>
+<left>
+    <img title="" alt="20200525132249" src="/images/hello10/20200525132249.png" />
+</left>
+<div>
+在此发现只安装了gcc和openssl，其他都没有安装，所以需要安装前置环境，输入以下命令：
+
+<pre><code>yum -y install zlib zlib-devel pcre pcre-devel openssl openssl-devel   # 一键安装</code></pre><div>
+<left>
+    <img title="" alt="20200525133307" src="/images/hello10/20200525133307.png" />
+</left>
+<div>
+至此前置软件安装结束，下面进入正式安装nginx
+
+<h3 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h3><pre><code>cd /usr/local/software/nginx-1.18.0             # 进入nginx的安装根目录</code></pre><div>
+<left>
+<img title="" alt="20200525133513" src="/images/hello10/20200525133513.png" />
+</left>
+<div>
+
+<h4 id="配置nginx安装目录"><a href="#配置nginx安装目录" class="headerlink" title="配置nginx安装目录"></a>配置nginx安装目录</h4><pre><code>./configure --prefix=/usr/local/nginx           # 配置nginx安装目录，执行完成后不会产生nginx目录</code></pre><div>
+<left>
+<p>执行完成后会出现一个 Makefile 的文件</p>
+<img title="" alt="20200525134359" src="/images/hello10/20200525134359.png" />
+</left>
+<div>   
+
+<h4 id="编译并安装"><a href="#编译并安装" class="headerlink" title="编译并安装"></a>编译并安装</h4><pre><code>make &amp;&amp; make install                             # 编译、安装，执行完成后会产生nginx目录
+cd /usr/local/nginx/                             # 进入nginx目录</code></pre><div>
+<left>
+<p>nginx目录内容</p>
+<img title="" alt="20200525143235" src="/images/hello10/20200525143235.png" />
+</left>
+<div>  
+
+<h4 id="测试是否安装成功"><a href="#测试是否安装成功" class="headerlink" title="测试是否安装成功"></a>测试是否安装成功</h4><pre><code>./sbin/nginx -t</code></pre><div>
+<left>
+<p>出现 test is successful 表示安装成功，同时会生成一些文件</p>
+<img title="" alt="20200525144949" src="/images/hello10/20200525144949.png" />
+</left>
+<div> 
+
+<h3 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h3><pre><code>cd /usr/local/nginx/sbin                        # 进入启动目录
+./nginx                                         # 启动nginx，默认读取 /usr/local/nginx/conf 目录下的 nginx.conf 配置文件
+ps -ef | grep nginx                             # 查看nginx是否启动</code></pre><div>
+<left>
+<p>当出现 worker process 则表示运行成功</p>
+<img title="" alt="20200525145522" src="/images/hello10/20200525145522.png" />
+</left>
+<div> 
+另 执行命令： ps -A | grep nginx ，如果返回结果的话，也说明有nginx在运行，服务已经启动
+<div>
+<left>
+<img title="" alt="20200525150655" src="/images/hello10/20200525150655.png" />
+</left>
+<div> 
+
+<h3 id="访问nginx"><a href="#访问nginx" class="headerlink" title="访问nginx"></a>访问nginx</h3><pre><code>curl http://localhost                           # 默认端口为：80</code></pre><div>
+<left>
+<p>当出现 Welcome to nginx! 则表示访问成功</p>
+<img title="" alt="20200525150656" src="/images/hello10/20200525150656.png" />
+</left>
+<div> 
+
+<h3 id="修改nginx-conf"><a href="#修改nginx-conf" class="headerlink" title="修改nginx.conf"></a>修改nginx.conf</h3><pre><code>cd /usr/local/nginx/conf/                       # 进入nginx配置文件目录
+vim nginx.conf                                  # 进入编辑文件模式</code></pre><div>
+<left>
+<img title="" alt="20200525152109" src="/images/hello10/20200525152109.png" />
+</left>
+<div> 
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">location &#x2F; &#123;</span><br><span class="line">    autoindex on; #打开目录列表</span><br><span class="line">    autoindex_exact_size off; #on显示文件的确切大小，off则会用M、G等单位</span><br><span class="line">    autoindex_localtime on; #显示文件服务器时间，off显示GMT时间</span><br><span class="line">    root   html;</span><br><span class="line">    index  index.html index.htm;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div>
+<left>
+<p>修改完成后使用 /usr/local/nginx/sbin/nginx -t 命令检测语句是否修改正确，如出现 test is successful，则表示正确</p>
+<img title="" alt="20200525152320" src="/images/hello10/20200525152320.png" />
+<p>接着使用 /usr/local/nginx/sbin/nginx 启动服务即可 </p>
+</left>
+<div> 
+
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><pre><code>/usr/local/nginx/sbin/nginx                     # 启动服务
+/usr/local/nginx/sbin/nginx -s stop             # 停止服务
+/usr/local/nginx/sbin/nginx -s reload           # 重启服务
+/usr/local/nginx/sbin/nginx -t                  # 检测语句</code></pre><hr>
 <p>** end **</p>
 
       
@@ -439,7 +546,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://zhuqiaolun.com/2020/05/22/hello5/" title="在Windows上安装git-v2.26.2" target="_blank" rel="external">https://zhuqiaolun.com/2020/05/22/hello5/</a>
+      <a href="https://zhuqiaolun.com/2020/05/25/hello10/" title="在Linux中安装nginx环境" target="_blank" rel="external">https://zhuqiaolun.com/2020/05/25/hello10/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -485,13 +592,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2020/05/22/hello6/" title="在idea中创建项目与github关联"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2020/05/21/hello4/" title="(图)王者荣耀 - 武则天 - 女帝"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2020/05/24/hello9/" title="使本地git与Github连接"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
