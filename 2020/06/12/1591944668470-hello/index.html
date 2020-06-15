@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>RabbitMq学习三 | zhuqiaolun - 个人博客</title>
+  <meta name="description" content="使用交换机topic+routingKey的模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RabbitMq学习三">
+<meta property="og:url" content="https://www.zhuqiaolun.com/2020/06/12/1591944668470-hello/index.html">
+<meta property="og:site_name" content="zhuqiaolun - 个人博客">
+<meta property="og:description" content="使用交换机topic+routingKey的模式">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.zhuqiaolun.com/2020/06/12/1591944668470-hello/20200612180958.png">
+<meta property="og:image" content="https://www.zhuqiaolun.com/2020/06/12/1591944668470-hello/20200615110247.png">
+<meta property="og:image" content="https://www.zhuqiaolun.com/2020/06/12/1591944668470-hello/20200615111036.png">
+<meta property="article:published_time" content="2020-06-12T06:51:08.000Z">
+<meta property="article:modified_time" content="2020-06-15T03:11:02.492Z">
+<meta property="article:author" content="zhuqiaolun">
+<meta property="article:tag" content="RabbitMq，交换机topic，路由routingKey，优先级">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zhuqiaolun.com/2020/06/12/1591944668470-hello/20200612180958.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zhuqiaolun.com/2020/06/12/1591944668470-hello/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="zhuqiaolun - 个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/pace-theme-flash.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+<link rel="stylesheet" href="/css/font_alicdn.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="/">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">十二</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Java开发工程师</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/zhuqiaolun/zhuqiaolun.github.io" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows10/">Windows10</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/queue%E9%98%9F%E5%88%97/">queue队列</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80/">王者荣耀</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMq/" rel="tag">RabbitMq</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo%E4%B8%BB%E9%A2%98/" rel="tag">hexo主题</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/" rel="tag">idea</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/" rel="tag">安装软件</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Java/" style="font-size: 13px;">Java</a> <a href="/tags/RabbitMq/" style="font-size: 13.67px;">RabbitMq</a> <a href="/tags/hexo%E4%B8%BB%E9%A2%98/" style="font-size: 13.67px;">hexo主题</a> <a href="/tags/idea/" style="font-size: 13px;">idea</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 13px;">其他</a> <a href="/tags/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/" style="font-size: 14px;">安装软件</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 13.33px;">游戏</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/queue%E9%98%9F%E5%88%97/">queue队列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/12/1591944668470-hello/" class="title">RabbitMq学习三</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-12T06:51:08.000Z" itemprop="datePublished">2020-06-12 14:51:08</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/queue%E9%98%9F%E5%88%97/">queue队列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/12/1591941634146-hello/" class="title">RabbitMq学习二</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-12T06:00:34.000Z" itemprop="datePublished">2020-06-12 14:00:34</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/queue%E9%98%9F%E5%88%97/">queue队列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/11/1591869892000-hello/" class="title">RabbitMq学习一</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-11T10:04:52.000Z" itemprop="datePublished">2020-06-11 18:04:52</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/hexo/">hexo</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/10/1591760460000-hello/" class="title">修改hexo创建文章名称规则</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-10T03:41:00.000Z" itemprop="datePublished">2020-06-10 11:41:00</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/hexo/">hexo</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/05/29/1590766728000-hello/" class="title">hexo博客收录</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-05-29T15:38:48.000Z" itemprop="datePublished">2020-05-29 23:38:48</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引入的maven依赖"><span class="toc-number">1.</span> <span class="toc-text">引入的maven依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yml配置"><span class="toc-number">2.</span> <span class="toc-text">yml配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#声明绑定关系"><span class="toc-number">3.</span> <span class="toc-text">声明绑定关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生产者"><span class="toc-number">4.</span> <span class="toc-text">生产者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#消费者"><span class="toc-number">5.</span> <span class="toc-text">消费者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#回调"><span class="toc-number">6.</span> <span class="toc-text">回调</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试"><span class="toc-number">7.</span> <span class="toc-text">测试</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-1591944668470-hello" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      RabbitMq学习三
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-type">原创</span>
+        <span class="article-date">
+    <i class="icon icon-calendar-plus"></i>
+	<a href="/2020/06/12/1591944668470-hello/" class="article-date">
+	  <time datetime="2020-06-12T06:51:08.000Z" itemprop="datePublished">2020-06-12 14:51:08</time>
+	</a>
+</span>
+
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/queue%E9%98%9F%E5%88%97/">queue队列</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/RabbitMq/" rel="tag">RabbitMq</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+	<span class="article-read hidden-xs">
+    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
+    	<span id="/2020/06/12/1591944668470-hello/" class="leancloud_visitors"  data-flag-title="RabbitMq学习三">0</span>
+    </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/06/12/1591944668470-hello/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 998(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="引入的maven依赖"><a href="#引入的maven依赖" class="headerlink" title="引入的maven依赖"></a>引入的maven依赖</h3><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-amqp<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.0.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="yml配置"><a href="#yml配置" class="headerlink" title="yml配置"></a>yml配置</h3><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  rabbitmq:</span><br><span class="line">    addresses: 127.0.0.1:5672</span><br><span class="line">    username: guest</span><br><span class="line">    password: guest</span><br><span class="line">    connection-timeout: 15000</span><br><span class="line">    virtual-host: /</span><br><span class="line">    # 开启消息发送到交换器（Exchange）后触发回调</span><br><span class="line">    publisher-confirm-type: simple</span><br><span class="line">    # 开启消息发送到队列（Queue）后触发回调</span><br><span class="line">    publisher-returns: true</span><br><span class="line">    listener:</span><br><span class="line">      direct:</span><br><span class="line">        # 开启ACK</span><br><span class="line">        acknowledge-mode: manual  # 开启手动 ，否则confirm自动确认</span><br><span class="line">      simple:</span><br><span class="line">        # 开启ACK</span><br><span class="line">        # 消息接收确认，可选模式：NONE（不确认）、AUTO（自动确认）、MANUAL（手动确认）</span><br><span class="line">        acknowledge-mode: manual</span><br><span class="line">        # 最小线程数量</span><br><span class="line">        concurrency: 10</span><br><span class="line">        # 最大线程数量</span><br><span class="line">        max-concurrency: 10</span><br><span class="line">        # 每个消费者可能未完成的最大未确认消息数量</span><br><span class="line">        prefetch: 1</span><br><span class="line">    template:</span><br><span class="line">      # 交换机找不到QUEUE时，会调用Basic.Return 命令将消息返回给生产者</span><br><span class="line">      mandatory: true</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="声明绑定关系"><a href="#声明绑定关系" class="headerlink" title="声明绑定关系"></a>声明绑定关系</h3><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 初始化项目 就会创建 交换器，路由，队列，如果在服务中存在交换器的属性或者队列的属性不同，则会出现异常</span><br><span class="line"> * @return 返回</span><br><span class="line"> */</span><br><span class="line">@Configuration</span><br><span class="line">public class RabbitMqConfig {</span><br><span class="line"></span><br><span class="line">    private static final String PRIORITY_QUEUE_NAME = "priority.topic_demo";</span><br><span class="line">    private static final String PRIORITY_TOPIC_ROUTING_KEY = "priority.topic.routingKey";</span><br><span class="line">    private static final String PRIORITY_EXCHANGE_NAME = "priority.topic.exchange.name";</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 声明消息队列</span><br><span class="line">     * @return 返回</span><br><span class="line">     */</span><br><span class="line">    @Bean(PRIORITY_QUEUE_NAME)</span><br><span class="line">    public Queue priorityTopicDemo(){</span><br><span class="line">        Map<span class="tag">&lt;<span class="name">String,</span> <span class="attr">Object</span>&gt;</span> arguments = new HashMap<span class="tag">&lt;&gt;</span>(1);</span><br><span class="line">        arguments.put("x-max-priority", 255);</span><br><span class="line">        return new Queue(PRIORITY_QUEUE_NAME,true, false, false,arguments);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 声明了一个Topic类型的交换机，durable是持久化（重启rabbitmq这个交换机不会被自动删除）</span><br><span class="line">     * @return 返回</span><br><span class="line">     */</span><br><span class="line">    @Bean(PRIORITY_EXCHANGE_NAME)</span><br><span class="line">    public Exchange priorityTopicExchangeName(){</span><br><span class="line">        return ExchangeBuilder.topicExchange(PRIORITY_EXCHANGE_NAME).durable(true).build();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 声明队列和交换机绑定关系，并且指定RoutingKey</span><br><span class="line">     * @param queue 队列</span><br><span class="line">     * @param exchange 交换机</span><br><span class="line">     * @return  返回</span><br><span class="line">     */</span><br><span class="line">    @Bean</span><br><span class="line">    public Binding queueBindingTopic(@Qualifier(PRIORITY_QUEUE_NAME) Queue queue,@Qualifier(PRIORITY_EXCHANGE_NAME) Exchange exchange){</span><br><span class="line">        return BindingBuilder.bind(queue).to(exchange).with(PRIORITY_TOPIC_ROUTING_KEY).noargs();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h3><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">@Slf4j</span><br><span class="line">public class HelloSender {</span><br><span class="line"></span><br><span class="line">    @Resource</span><br><span class="line">    private RabbitTemplate rabbitTemplate;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 通过exchange和routingKey的方式</span><br><span class="line">     * rabbitTemplate.sendAndReceive(String exchange, String routingKey, Message message)</span><br><span class="line">     * @param messageId  消息ID</span><br><span class="line">     * @param exchange  交换机</span><br><span class="line">     * @param routingKey 路由</span><br><span class="line">     * @param priority 优先级</span><br><span class="line">     * @param content 内容</span><br><span class="line">     */</span><br><span class="line">    public void sendAndReceive(String messageId, String exchange, String routingKey, Integer priority, String content) {</span><br><span class="line">        Message message = MessageBuilder.withBody(content.getBytes(Charset.forName("UTF-8")))</span><br><span class="line">              .setContentType(MessageProperties.CONTENT_TYPE_TEXT_PLAIN)</span><br><span class="line">              .setMessageId(messageId)</span><br><span class="line">              .setPriority(priority)</span><br><span class="line">              .build();</span><br><span class="line">        CorrelationData correlationData = new CorrelationData();</span><br><span class="line">        correlationData.setId(messageId);</span><br><span class="line">        this.rabbitTemplate.convertAndSend(exchange, routingKey, message,correlationData);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="消费者"><a href="#消费者" class="headerlink" title="消费者"></a>消费者</h3><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">@Slf4j</span><br><span class="line">public class HelloReceiver {</span><br><span class="line">      /**</span><br><span class="line">        * @param message 队列消息对象</span><br><span class="line">        */</span><br><span class="line">       @RabbitListener(queues = TopicData.PRIORITY_QUEUE_NAME)</span><br><span class="line">       public void queueNameTest1(Channel channel, Message message) {</span><br><span class="line">           try {</span><br><span class="line">               String stringBuilder = "消息ID: " + message.getMessageProperties().getMessageId() + "；" +</span><br><span class="line">                       "优先级: " + message.getMessageProperties().getPriority() + "；" +</span><br><span class="line">                       "消息内容: " + new String(message.getBody(), StandardCharsets.UTF_8);</span><br><span class="line">               //告诉服务器收到这条消息 已经被我消费了 可以在队列删掉 这样以后就不会再发了 否则消息服务器以为这条消息没处理掉 后续还会在发</span><br><span class="line">               channel.basicAck(message.getMessageProperties().getDeliveryTag(),true);</span><br><span class="line">               log.info(stringBuilder);</span><br><span class="line">           } catch (IOException e) {</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">               try {</span><br><span class="line">                   //当发生异常时丢弃这条消息，或者 另行处理</span><br><span class="line">                   channel.basicNack(message.getMessageProperties().getDeliveryTag(), false,false);</span><br><span class="line">                   System.out.println("receiver fail");</span><br><span class="line">               } catch (IOException e1) {</span><br><span class="line">                   e1.printStackTrace();</span><br><span class="line">               }</span><br><span class="line">           }</span><br><span class="line">       }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h3><p>自定义 RabbitTemplate.ConfirmCallback 实现类</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Slf4j</span><br><span class="line">public class RabbitConfirmCallBack implements RabbitTemplate.ConfirmCallback{</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void confirm(CorrelationData correlationData, boolean ack, String cause) {</span><br><span class="line">        log.info("收到回调，成功发送到broker");</span><br><span class="line">        log.info("消息唯一标识: {}", correlationData.getId());</span><br><span class="line">        log.info("确认状态: {}", ack);</span><br><span class="line">        log.info("造成原因: {}", cause);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>自定义 RabbitTemplate.ConfirmCallback 实现类</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Slf4j</span><br><span class="line">public class RabbitReturnCallback  implements RabbitTemplate.ReturnCallback{</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {</span><br><span class="line">        log.info("收到回调，交换机找不到队列");</span><br><span class="line">        log.info("消息主体: {}", message);</span><br><span class="line">        log.info("回复编码: {}", replyCode);</span><br><span class="line">        log.info("回复内容: {}", replyText);</span><br><span class="line">        log.info("交换器: {}", exchange);</span><br><span class="line">        log.info("路由键: {}", routingKey);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>添加回调，配置 rabbitTemplate</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">@AllArgsConstructor</span><br><span class="line">public class RabbitTemplateInitializingBean implements InitializingBean {</span><br><span class="line"></span><br><span class="line">    private final RabbitTemplate rabbitTemplate;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void afterPropertiesSet(){</span><br><span class="line">        rabbitTemplate.setConfirmCallback(new RabbitConfirmCallBack());</span><br><span class="line">        rabbitTemplate.setReturnCallback(new RabbitReturnCallback());</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootTest</span><br><span class="line">class SpringBootRabbitmqExampleApplicationTest {</span><br><span class="line">    @Resource</span><br><span class="line">    private HelloSender helloSender;</span><br><span class="line">    @Test</span><br><span class="line">    void content(){</span><br><span class="line">        Random r = new Random();</span><br><span class="line">        int number = 1;</span><br><span class="line">        for (int i = 0; i <span class="tag">&lt; <span class="attr">number</span> ; <span class="attr">i</span>++) {</span></span><br><span class="line"><span class="tag">            <span class="attr">String</span> <span class="attr">messageId</span> = <span class="string">UUID.randomUUID().toString().replace(</span>"<span class="attr">-</span>","");</span></span><br><span class="line"><span class="tag">            <span class="attr">String</span> <span class="attr">exchange</span> = <span class="string">"priority.topic.exchange.name"</span>;</span></span><br><span class="line"><span class="tag">            <span class="attr">String</span> <span class="attr">routingKey</span> = <span class="string">"priority.topic.routingKey"</span>;</span></span><br><span class="line"><span class="tag">            <span class="attr">Integer</span> <span class="attr">priority</span> = <span class="string">r.nextInt(255);</span></span></span><br><span class="line"><span class="tag">            <span class="attr">String</span> <span class="attr">content</span> = <span class="string">"这是第["</span>+<span class="attr">i</span>+"]个消息";</span></span><br><span class="line"><span class="tag">            <span class="attr">helloSender.sendAndReceive</span>(<span class="attr">messageId</span>, <span class="attr">exchange</span>, <span class="attr">routingKey</span>, <span class="attr">priority</span>, <span class="attr">content</span>);</span></span><br><span class="line"><span class="tag">        }</span></span><br><span class="line"><span class="tag">    }</span></span><br><span class="line"><span class="tag">}</span></span><br></pre></td></tr></tbody></table></figure>
+<p>结果：<br><img src="/2020/06/12/1591944668470-hello/20200612180958.png" alt="20200612180958"></p>
+<p>当删除交换机时的执行错误<br><img src="/2020/06/12/1591944668470-hello/20200615110247.png" alt="20200615110247"></p>
+<p>当删除队列时的执行错误<br><img src="/2020/06/12/1591944668470-hello/20200615111036.png" alt="20200615111036"></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+      <!-- 结束标志 -->
+        <hr/>
+        <p> ** end **</p>
+        
+          <span>
+            更新时间： <time datetime="2020-06-15T03:11:02.492Z" itemprop="datePublished">2020-06-15 11:11:02</time>
+          </span>
+        
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.zhuqiaolun.com/2020/06/12/1591944668470-hello/" title="RabbitMq学习三" target="_blank" rel="external">https://www.zhuqiaolun.com/2020/06/12/1591944668470-hello/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="/" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="/" target="_blank"><span class="text-dark">十二</span><small class="ml-1x">Java开发工程师</small></a></h3>
+        <div>我想起那天夕阳下的奔跑，那是我逝去的青春。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2020/06/12/1591941634146-hello/" title="RabbitMq学习二"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+    
+      <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+    
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="qq,wechat" data-mobile-sites="wechat"></div>
+    
+  </div>
+  </div>
+</nav>
+
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/pay_zhifubao.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/pay_weixin.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/zhuqiaolun/zhuqiaolun.github.io" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2020 &nbsp;&nbsp; <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42118202000044" target="_blank">鄂ICP备18019781号-1</a>
+        
+        <div class="publishby">
+            Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+        <!-- 添加网站运行时间  start -->
+        
+        <div class="copyright">
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                let now = new Date();
+                function createTime() {
+                    //此处修改你的建站时间或者网站上线时间
+                    let grt = new Date('05/13/2020 10:37:11');//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+                    now.setTime(now.getTime()+250);
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+                    if(String(hnum).length === 1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes); if(String(mnum).length === 1 ){mnum = "0" + mnum;}
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds); if(String(snum).length === 1 ){snum = "0" + snum;}
+                    document.getElementById("timeDate").innerHTML = "本站已存活 "+dnum+" 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval(createTime, 250);
+            </script>
+        </div>
+        
+        <!-- 添加网站运行时间 end -->
+        <!-- 网站统计 start -->
+        
+        <div>
+            <span class="post-count">本站文章字数统计：6.9k</span>
+        </div>
+        <div>
+            <span class="post-count">本站文章数量统计：15</span>
+        </div>
+        
+        <!-- 网站统计 end -->
+    </div>
+</footer>
+
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+<script src="/js/canvas-nest.min.js"></script>
+
+
+<script src="/js/love.js"></script>
+
+
+<script src="/js/pace.min.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:www.zhuqiaolun.com ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'PF940bpiGD2ed9L7KkLHctOS-9Nh9j0Va',
+    appKey: 'KhWLjwdhlhuDfMCgQhe5dOcT',
+    placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: true
+  });
+  </script>
+
+     
+
+
+
+
+
+
+    <script defer>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?ad87e5ac4fb058a199d14ddc8d871ca7";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+</body>
+</html>
