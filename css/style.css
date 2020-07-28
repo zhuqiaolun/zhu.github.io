@@ -5889,6 +5889,13 @@ body.no-sidebar .sidebar {
   margin-right: 10px;
 }
 
+.main .pager .space {
+  margin-left: 10px;
+  margin-right: 10px;
+  line-height: 32px;
+  float: left;
+}
+
 .main .pager .page-number.current {
   color: #2196f3;
 }
