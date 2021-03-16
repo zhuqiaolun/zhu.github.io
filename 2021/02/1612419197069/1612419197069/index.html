@@ -20,7 +20,7 @@
 <meta property="og:description" content="Java原生URL模拟请求">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-04T06:13:17.000Z">
-<meta property="article:modified_time" content="2021-03-01T06:40:37.601Z">
+<meta property="article:modified_time" content="2021-03-01T06:40:37.600Z">
 <meta property="article:author" content="zhuqiaolun">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="url">
@@ -41,6 +41,12 @@
   
 <link rel="stylesheet" href="/css/highlight.css">
 
+  
+<link rel="stylesheet" href="/css/iconfont.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
@@ -48,33 +54,30 @@
     
       <div id="wrapper" style="background-image: url(/images/bg.jpg)" title="背景图片">
     
-
       <header id="header">
   <div id="nav-toggle" class="nav-toggle"></div>
   <div class="head-box global-width">
     <nav class="nav-box nav-right">
       
-        <a class="nav-item" href="/" title
+        <a class="nav-item" href="/" title=""
         
         >首页</a>
       
-        <a class="nav-item" href="/archives" title
+        <a class="nav-item" href="/archives" title=""
         
         >归档</a>
       
-        <a class="nav-item" href="/about" title
+        <a class="nav-item" href="/search" title=""
+        
+        >搜索</a>
+      
+        <a class="nav-item" href="/about" title=""
         
         >关于</a>
       
-        <a class="nav-item" href="/atom.xml" title
+        <a class="nav-item" href="https://github.com/zhuqiaolun" title=""
         
-          target='_blank'
-        
-        >Rss</a>
-      
-        <a class="nav-item" href="https://github.com/zhuqiaolun" title
-        
-          target='_blank'
+          target="_blank"
         
         >Github</a>
       
@@ -83,7 +86,9 @@
 </header>
 
       <div id="middlecontent" title class="global-width sidebar-right">
-        <section id="main"><article id="post-1612419197069/1612419197069" class="article global-container article-type-post" itemscope itemprop="blogPost">
+          <section id="main">
+              
+                  <article id="post-2021/02/1612419197069/1612419197069" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
       
@@ -103,6 +108,7 @@
   <div class="article-category">
     <a class="article-category-link" href="/categories/J-Tools/">J-Tools</a>
   </div>
+
 
     
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
@@ -130,9 +136,10 @@
 
   <div class="article-inner">
     
+
     <div class="article-content article-content-cloud" itemprop="articleBody">
       
-          <hr/>
+        <hr/>
         <p>采用原始URL进行模拟请求</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import java.io.*;</span><br><span class="line">import java.net.HttpURLConnection;</span><br><span class="line">import java.net.URL;</span><br><span class="line">import java.nio.charset.StandardCharsets;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @ClassName: HttpClientUtil</span><br><span class="line"> * @Description: Java原生URL模拟请求</span><br><span class="line"> * @Author: Demon</span><br><span class="line"> * @Date: 2021/2/4 10:45</span><br><span class="line"> */</span><br><span class="line">public class HttpClientUtil {</span><br><span class="line"></span><br><span class="line">    public static String doGet(String httpUrl) {</span><br><span class="line">        HttpURLConnection connection;</span><br><span class="line">        try {</span><br><span class="line">            // 创建远程url连接对象</span><br><span class="line">            URL url = new URL(httpUrl);</span><br><span class="line">            // 通过远程url连接对象打开一个连接，强转成httpURLConnection类</span><br><span class="line">            connection = (HttpURLConnection) url.openConnection();</span><br><span class="line">            // 设置连接方式：get</span><br><span class="line">            connection.setRequestMethod("GET");</span><br><span class="line">            // 设置连接主机服务器的超时时间：15000毫秒</span><br><span class="line">            connection.setConnectTimeout(15000);</span><br><span class="line">            // 设置读取远程返回的数据时间：60000毫秒</span><br><span class="line">            connection.setReadTimeout(60000);</span><br><span class="line">            // 发送请求</span><br><span class="line">            connection.connect();</span><br><span class="line">            return getResult(null,connection);</span><br><span class="line">        } catch (IOException e) {</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            return null;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public static String doPost(String httpUrl, String param) {</span><br><span class="line">        HttpURLConnection connection;</span><br><span class="line">        OutputStream os;</span><br><span class="line">        try {</span><br><span class="line">            URL url = new URL(httpUrl);</span><br><span class="line">            // 通过远程url连接对象打开连接</span><br><span class="line">            connection = (HttpURLConnection) url.openConnection();</span><br><span class="line">            // 设置连接请求方式</span><br><span class="line">            connection.setRequestMethod("POST");</span><br><span class="line">            // 设置连接主机服务器超时时间：15000毫秒</span><br><span class="line">            connection.setConnectTimeout(15000);</span><br><span class="line">            // 设置读取主机服务器返回数据超时时间：60000毫秒</span><br><span class="line">            connection.setReadTimeout(60000);</span><br><span class="line">            // 默认值为：false，当向远程服务器传送数据/写数据时，需要设置为true</span><br><span class="line">            connection.setDoOutput(true);</span><br><span class="line">            // 默认值为：true，当前向远程服务读取数据时，设置为true，该参数可有可无</span><br><span class="line">            connection.setDoInput(true);</span><br><span class="line">            // 设置传入参数的格式:请求参数应该是 name1=value1&amp;name2=value2 的形式。</span><br><span class="line">            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");</span><br><span class="line">            // 通过连接对象获取一个输出流</span><br><span class="line">            os = connection.getOutputStream();</span><br><span class="line">            // 通过输出流对象将参数写出去/传输出去,它是通过字节数组写出的</span><br><span class="line">            os.write(param.getBytes());</span><br><span class="line">            return getResult(os,connection);</span><br><span class="line">        } catch (IOException e) {</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            return null;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    private static String getResult(OutputStream os,HttpURLConnection connection){</span><br><span class="line">        int responseCode = 200;</span><br><span class="line">        InputStream is = null;</span><br><span class="line">        BufferedReader br = null;</span><br><span class="line">        try {</span><br><span class="line">            String result = null;</span><br><span class="line">            if (connection.getResponseCode() == responseCode) {</span><br><span class="line">                is = connection.getInputStream();</span><br><span class="line">                br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));</span><br><span class="line">                StringBuilder stringBuilder = new StringBuilder();</span><br><span class="line">                String temp;</span><br><span class="line">                while ((temp = br.readLine()) != null) {</span><br><span class="line">                    stringBuilder.append(temp);</span><br><span class="line">                }</span><br><span class="line">                result = stringBuilder.toString();</span><br><span class="line">            }</span><br><span class="line">            return result;</span><br><span class="line">        } catch (Exception e){</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            return null;</span><br><span class="line">        } finally {</span><br><span class="line">            getClose(br,os,is,connection);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    private static void getClose(BufferedReader br,OutputStream os, InputStream is,HttpURLConnection connection ){</span><br><span class="line">        // 关闭资源</span><br><span class="line">        if (null != br) {</span><br><span class="line">            try {</span><br><span class="line">                br.close();</span><br><span class="line">            } catch (IOException e) {</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        if (null != os) {</span><br><span class="line">            try {</span><br><span class="line">                os.close();</span><br><span class="line">            } catch (IOException e) {</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        if (null != is) {</span><br><span class="line">            try {</span><br><span class="line">                is.close();</span><br><span class="line">            } catch (IOException e) {</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        if(connection != null){</span><br><span class="line">            connection.disconnect();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div>
 
@@ -193,17 +200,21 @@
     <link rel="stylesheet" href="/css/gitment.css"> 
 <script src="/js/gitment.js"></script>
 
-  
   <hr/>
   <span style="float: right">
-    更新时间：<time datetime="2021-03-01T06:40:37.601Z" itemprop="datePublished">2021-03-01 14:40:37</time>
+    更新时间：<time datetime="2021-03-01T06:40:37.600Z" itemprop="datePublished">2021-03-01 14:40:37</time>
   </span>
+  
+
 </article>
 
-</section>
+
+              
+          </section>
         <aside id="sidebar">
   
-    <div class="widget-box">
+    
+<div class="widget-box">
   <div class="avatar-box">
     <img class="avatar" src="/images/favicon.ico" title="DEMON"  alt="头像"/>
     <h3 class="avatar-name">
@@ -223,7 +234,7 @@
   <div class="widget-box">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Halo/">Halo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/J-Tools/">J-Tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jackson/">Jackson</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot/">SpringBoot</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/J-Tools/">J-Tools</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jackson/">Jackson</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaFx/">JavaFx</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kafka/">Kafka</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyCat/">MyCat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RabbitMq/">RabbitMq</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot/">SpringBoot</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tomcat/">Tomcat</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%96%E7%95%8C/">世界</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a><span class="category-list-count">10</span></li></ul>
     </div>
   </div>
 
@@ -233,14 +244,14 @@
   <div class="widget-box">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
 
   
       <div class="widget-box">
-    <h3 class="widget-title">友链</h3>
+    <h3 class="widget-title">作品</h3>
     <div class="widget">
       
         <a style="display: block;" href="https://www.zhuqiaolun.com/weixinz/" title target='_blank'
@@ -282,10 +293,10 @@
           <!-- 网站统计 start -->
           
               <div>
-                  <span class="post-count">本站文章字数统计：31.9k</span>
+                  <span class="post-count">本站文章字数统计：38.1k</span>
               </div>
               <div>
-                  <span class="post-count">本站文章数量统计：59</span>
+                  <span class="post-count">本站文章数量统计：72</span>
               </div>
           
           <!-- 网站统计 end -->
@@ -316,9 +327,9 @@
       <script src="/js/jquery-2.0.3.min.js"></script>
 <script>
 if (!window.jQuery) {
-var script = document.createElement('script');
-script.src = "/js/jquery-2.0.3.min.js";
-document.body.write(script);
+  var script = document.createElement('script');
+  script.src = "/js/jquery-2.0.3.min.js";
+  document.body.write(script);
 }
 </script>
 
@@ -334,6 +345,13 @@ document.body.write(script);
 <script src="/js/script.js"></script>
 
 
+<script src="/js/search.js"></script>
+
+
+<script src="/js/custom.js"></script>
+
+
+
 
 
     </div>
@@ -344,9 +362,9 @@ document.body.write(script);
   
     <a href="/%5Bobject%20Object%5D" class="mobile-nav-link">归档</a>
   
-    <a href="/%5Bobject%20Object%5D" class="mobile-nav-link">关于</a>
+    <a href="/%5Bobject%20Object%5D" class="mobile-nav-link">搜索</a>
   
-    <a href="/%5Bobject%20Object%5D" class="mobile-nav-link">Rss</a>
+    <a href="/%5Bobject%20Object%5D" class="mobile-nav-link">关于</a>
   
     <a href="/%5Bobject%20Object%5D" class="mobile-nav-link">Github</a>
   

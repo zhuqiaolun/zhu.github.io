@@ -20,7 +20,7 @@
 <meta property="og:description" content="对响应值Response的封装使用">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-11T07:22:14.000Z">
-<meta property="article:modified_time" content="2021-03-01T06:46:25.271Z">
+<meta property="article:modified_time" content="2021-03-10T02:54:54.067Z">
 <meta property="article:author" content="zhuqiaolun">
 <meta property="article:tag" content="spring-boot，Response">
 <meta name="twitter:card" content="summary">
@@ -39,6 +39,12 @@
   
 <link rel="stylesheet" href="/css/highlight.css">
 
+  
+<link rel="stylesheet" href="/css/iconfont.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
@@ -46,33 +52,30 @@
     
       <div id="wrapper" style="background-image: url(/images/bg.jpg)" title="背景图片">
     
-
       <header id="header">
   <div id="nav-toggle" class="nav-toggle"></div>
   <div class="head-box global-width">
     <nav class="nav-box nav-right">
       
-        <a class="nav-item" href="/" title
+        <a class="nav-item" href="/" title=""
         
         >首页</a>
       
-        <a class="nav-item" href="/archives" title
+        <a class="nav-item" href="/archives" title=""
         
         >归档</a>
       
-        <a class="nav-item" href="/about" title
+        <a class="nav-item" href="/search" title=""
+        
+        >搜索</a>
+      
+        <a class="nav-item" href="/about" title=""
         
         >关于</a>
       
-        <a class="nav-item" href="/atom.xml" title
+        <a class="nav-item" href="https://github.com/zhuqiaolun" title=""
         
-          target='_blank'
-        
-        >Rss</a>
-      
-        <a class="nav-item" href="https://github.com/zhuqiaolun" title
-        
-          target='_blank'
+          target="_blank"
         
         >Github</a>
       
@@ -81,7 +84,9 @@
 </header>
 
       <div id="middlecontent" title class="global-width sidebar-right">
-        <section id="main"><article id="post-1605079334142/1605079334142" class="article global-container article-type-post" itemscope itemprop="blogPost">
+          <section id="main">
+              
+                  <article id="post-2020/11/1605079334142/1605079334142" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
       
@@ -102,6 +107,7 @@
     <a class="article-category-link" href="/categories/SpringBoot/">SpringBoot</a>
   </div>
 
+
     
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
@@ -115,7 +121,7 @@
           <br/>
         
         
-          本文字数统计(字)：<span class="post-wordcount hidden-xs" itemprop="wordCount">406</span>
+          本文字数统计(字)：<span class="post-wordcount hidden-xs" itemprop="wordCount">451</span>
           <br/>
         
         
@@ -128,9 +134,10 @@
 
   <div class="article-inner">
     
+
     <div class="article-content article-content-cloud" itemprop="articleBody">
       
-          <hr/>
+        <hr/>
         <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>返回的json中忽略null属性值，不传递<br>pom引入:</p>
 <div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- lombok --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- jackson --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure></div>
 <p>第一种，在yml中写入（全局）：</p>
@@ -140,7 +147,7 @@
 
 
 <h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>ResponseBean：</p>
-<div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import com.fasterxml.jackson.annotation.JsonIgnore;</span><br><span class="line">import com.fasterxml.jackson.annotation.JsonInclude;</span><br><span class="line">import com.fasterxml.jackson.databind.ObjectMapper;</span><br><span class="line">import lombok.Data;</span><br><span class="line">import lombok.SneakyThrows;</span><br><span class="line">import lombok.experimental.Accessors;</span><br><span class="line"></span><br><span class="line">import java.io.Serializable;</span><br><span class="line">/**</span><br><span class="line"> * @className: ResponseUtils.java</span><br><span class="line"> * @description:  返回的JSON数据结构标准</span><br><span class="line"> * @author: Demon</span><br><span class="line"> */</span><br><span class="line">@Data</span><br><span class="line">@Accessors(chain = true)</span><br><span class="line">public class ResponseBean implements Serializable {</span><br><span class="line"></span><br><span class="line">    private boolean success = false;</span><br><span class="line">    private Object data;</span><br><span class="line">    private String msg;</span><br><span class="line">    private String errCode;</span><br><span class="line">    private String errMsg;</span><br><span class="line"></span><br><span class="line">    @JsonIgnore</span><br><span class="line">    private boolean dataFormat = false;</span><br><span class="line"></span><br><span class="line">    @SneakyThrows</span><br><span class="line">    @Override</span><br><span class="line">    public String toString() {</span><br><span class="line">        ObjectMapper objectMapper = new ObjectMapper();</span><br><span class="line">        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);</span><br><span class="line">        if(this.isDataFormat()){</span><br><span class="line">            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);</span><br><span class="line">        }else{</span><br><span class="line">            return objectMapper.writer().writeValueAsString(this);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div>
+<div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import com.fasterxml.jackson.annotation.JsonIgnore;</span><br><span class="line">import com.fasterxml.jackson.annotation.JsonInclude;</span><br><span class="line">import com.fasterxml.jackson.databind.ObjectMapper;</span><br><span class="line">import lombok.Data;</span><br><span class="line">import lombok.SneakyThrows;</span><br><span class="line">import lombok.experimental.Accessors;</span><br><span class="line"></span><br><span class="line">import java.io.Serializable;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author: Demon</span><br><span class="line"> * @date 2021/3/8 13:27</span><br><span class="line"> * @description: 返回的JSON数据结构标准</span><br><span class="line"> */</span><br><span class="line">@Data</span><br><span class="line">@Accessors(chain = true)</span><br><span class="line">public class ResponseBean implements Serializable {</span><br><span class="line"></span><br><span class="line">    private boolean success = false;</span><br><span class="line">    private Object data;</span><br><span class="line">    private String msg;</span><br><span class="line">    private String errCode;</span><br><span class="line">    private String errMsg;</span><br><span class="line"></span><br><span class="line">    @JsonIgnore</span><br><span class="line">    private boolean dataFormat = false;</span><br><span class="line"></span><br><span class="line">    @SneakyThrows</span><br><span class="line">    @Override</span><br><span class="line">    public String toString() {</span><br><span class="line">        ObjectMapper objectMapper = new ObjectMapper();</span><br><span class="line">        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);</span><br><span class="line">        ResponseBeanVo responseBeanVo = new ResponseBeanVo()</span><br><span class="line">                .setSuccess(this.isSuccess()).setData(this.getData()).setMsg(this.getMsg())</span><br><span class="line">                .setErrCode(this.getErrCode()).setErrMsg(this.getErrMsg());</span><br><span class="line">        if (this.isDataFormat()) {</span><br><span class="line">            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(responseBeanVo);</span><br><span class="line">        } else {</span><br><span class="line">            return objectMapper.writer().writeValueAsString(responseBeanVo);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">@Data</span><br><span class="line">@Accessors(chain = true)</span><br><span class="line">class ResponseBeanVo implements Serializable {</span><br><span class="line">    private boolean success;</span><br><span class="line">    private Object data;</span><br><span class="line">    private String msg;</span><br><span class="line">    private String errCode;</span><br><span class="line">    private String errMsg;</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div>
 
 <h3 id="BaseController"><a href="#BaseController" class="headerlink" title="BaseController"></a>BaseController</h3><div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @className: BaseController.java</span><br><span class="line"> * @description:  基本</span><br><span class="line"> * @author: Demon</span><br><span class="line"> */</span><br><span class="line">public abstract class BaseController {</span><br><span class="line">  /**</span><br><span class="line">    * 使用response输出JSON</span><br><span class="line">    * @param response response</span><br><span class="line">    * @param str 响应对应</span><br><span class="line">    */</span><br><span class="line">   protected void out(HttpServletResponse response, Object str) {</span><br><span class="line">       PrintWriter out = null;</span><br><span class="line">       try {</span><br><span class="line">           response.setCharacterEncoding("UTF-8");</span><br><span class="line">           response.setContentType("application/json");</span><br><span class="line">           out = response.getWriter();</span><br><span class="line">           out.print(str);</span><br><span class="line">       } catch (Exception e) {</span><br><span class="line">           log.error("输出JSON出错",e.getMessage());</span><br><span class="line">       } finally {</span><br><span class="line">           if (out != null) {</span><br><span class="line">               out.flush();</span><br><span class="line">               out.close();</span><br><span class="line">           }</span><br><span class="line">       }</span><br><span class="line">   }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div>
 
@@ -205,17 +212,21 @@
     <link rel="stylesheet" href="/css/gitment.css"> 
 <script src="/js/gitment.js"></script>
 
-  
   <hr/>
   <span style="float: right">
-    更新时间：<time datetime="2021-03-01T06:46:25.271Z" itemprop="datePublished">2021-03-01 14:46:25</time>
+    更新时间：<time datetime="2021-03-10T02:54:54.067Z" itemprop="datePublished">2021-03-10 10:54:54</time>
   </span>
+  
+
 </article>
 
-</section>
+
+              
+          </section>
         <aside id="sidebar">
   
-    <div class="widget-box">
+    
+<div class="widget-box">
   <div class="avatar-box">
     <img class="avatar" src="/images/favicon.ico" title="DEMON"  alt="头像"/>
     <h3 class="avatar-name">
@@ -235,7 +246,7 @@
   <div class="widget-box">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Halo/">Halo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/J-Tools/">J-Tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jackson/">Jackson</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot/">SpringBoot</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/J-Tools/">J-Tools</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jackson/">Jackson</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaFx/">JavaFx</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kafka/">Kafka</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyCat/">MyCat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RabbitMq/">RabbitMq</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot/">SpringBoot</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tomcat/">Tomcat</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%96%E7%95%8C/">世界</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a><span class="category-list-count">10</span></li></ul>
     </div>
   </div>
 
@@ -245,14 +256,14 @@
   <div class="widget-box">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
 
   
       <div class="widget-box">
-    <h3 class="widget-title">友链</h3>
+    <h3 class="widget-title">作品</h3>
     <div class="widget">
       
         <a style="display: block;" href="https://www.zhuqiaolun.com/weixinz/" title target='_blank'
@@ -294,10 +305,10 @@
           <!-- 网站统计 start -->
           
               <div>
-                  <span class="post-count">本站文章字数统计：31.9k</span>
+                  <span class="post-count">本站文章字数统计：38.1k</span>
               </div>
               <div>
-                  <span class="post-count">本站文章数量统计：59</span>
+                  <span class="post-count">本站文章数量统计：72</span>
               </div>
           
           <!-- 网站统计 end -->
@@ -328,9 +339,9 @@
       <script src="/js/jquery-2.0.3.min.js"></script>
 <script>
 if (!window.jQuery) {
-var script = document.createElement('script');
-script.src = "/js/jquery-2.0.3.min.js";
-document.body.write(script);
+  var script = document.createElement('script');
+  script.src = "/js/jquery-2.0.3.min.js";
+  document.body.write(script);
 }
 </script>
 
@@ -346,6 +357,13 @@ document.body.write(script);
 <script src="/js/script.js"></script>
 
 
+<script src="/js/search.js"></script>
+
+
+<script src="/js/custom.js"></script>
+
+
+
 
 
     </div>
@@ -356,9 +374,9 @@ document.body.write(script);
   
     <a href="/%5Bobject%20Object%5D" class="mobile-nav-link">归档</a>
   
-    <a href="/%5Bobject%20Object%5D" class="mobile-nav-link">关于</a>
+    <a href="/%5Bobject%20Object%5D" class="mobile-nav-link">搜索</a>
   
-    <a href="/%5Bobject%20Object%5D" class="mobile-nav-link">Rss</a>
+    <a href="/%5Bobject%20Object%5D" class="mobile-nav-link">关于</a>
   
     <a href="/%5Bobject%20Object%5D" class="mobile-nav-link">Github</a>
   

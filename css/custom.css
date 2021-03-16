@@ -1,0 +1,57 @@
+/* 自定义样式 */
+/* 分类 标签 文档 */
+.category-list-count,
+.tag-list-count,
+.archive-list-count {
+    padding-left: 5px;
+    color: #999;
+    font-size: 0.85em;
+}
+
+.category-list-count:before,
+.tag-list-count:before,
+.archive-list-count:before {
+    content: "(";
+}
+
+.category-list-count:after,
+.tag-list-count:after,
+.archive-list-count:after {
+    content: ")";
+}
+
+/* 搜索 */
+#site_search .search-result-list li{
+    box-shadow: 1px 2px 3px #ddd;
+    border: 1px solid rgba(190, 126, 74, .3);
+    background: rgba(255, 255, 255, .85);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px;
+}
+
+#site_search .search-result-title{
+    font-size: 1.7em;
+}
+
+#site_search .search-keyword{
+    color: red;
+}
+
+#site_search #local-search-input {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 7px 0 5px 5px;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+#site_search #local-search-input:focus{
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+}
